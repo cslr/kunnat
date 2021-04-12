@@ -5,5 +5,5 @@ Attempt to use Municipalities data to learn which budgets give highest income fr
 
 RESULT:
 
-Nothing surprising. Biggest values in each variable result to highest income per resident. Data from Finnish Statistics Center.
+Nothing surprising. Biggest values in each variable result to highest income per resident. Data from Finnish Statistics Center (small dataset).
 
