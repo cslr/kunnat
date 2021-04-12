@@ -1,2 +1,9 @@
 # kunnat
-D-Wave's Quantum Optimization Using Municipalities Statistics and Average Income (don't give good results)
+D-Wave's Quantum Optimization Using Municipalities Statistics and Average Income (DQM model)
+
+Attempt to use Municipalities data to learn which budgets give highest income from the population (through taxation).
+
+RESULT:
+
+Nothing surprising. Biggest values in each variable result to highest income per resident. Data from Finnish Statistics Center.
+
