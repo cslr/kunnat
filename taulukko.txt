@@ -1,0 +1,4 @@
+Kunnat tunnuslukutaulukko on ladattu tästä osoitteesta:
+
+https://pxnet2.stat.fi/PXWeb/pxweb/fi/Kuntien_talous_ja_toiminta/Kuntien_talous_ja_toiminta__Kunnat__9._Tunnusluvut/007_kta_19_2019.px/table/tableViewLayout1/
+
