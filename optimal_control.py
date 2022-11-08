@@ -113,6 +113,11 @@ M = numpy.matmul(invAtA, At)
 
 delta = numpy.matmul(M, target_delta) - x0
 
+MM = numpy.linalg.inv(A)
+delta2 = numpy.matmul(MM, target_delta)
+
+
+
 print("VALUES:")
 
 print(delta)
@@ -132,7 +137,8 @@ for i in range(len(ratio)):
 print(headers)
 
 
-# plots bar-figure
+######################################################################
+# plots bar-figure (first solution)
 
 import matplotlib.pyplot as plt
 from textwrap import wrap
@@ -160,7 +166,34 @@ plt.show()
 plt.savefig('optimal_control-2.png')
 
 
+######################################################################
+# plots bar-figure (2nd solution)
 
+ratio2 = delta2 / x0
 
-
+# transforms to log-scale
+for i in range(len(ratio2)):
+    if(ratio2[i] < 0.0):
+        ratio2[i] = -math.log(abs(ratio2[i]))
+    else:
+        ratio2[i] = math.log(abs(ratio2[i]))
     
+
+
+fig = plt.figure(figsize=(20,10))
+
+plt.bar(headers[1:16], ratio2[1:16], color='blue', width=0.4)
+
+plt.title('Maksimoi työllisyyden');
+plt.show()
+
+plt.savefig('better_optimal_control-1.png')
+
+fig = plt.figure(figsize=(20,10))
+
+plt.bar(headers[17:32], ratio2[17:32], color='blue', width=0.4)
+
+plt.title('Maksimoi työllisyyden');
+plt.show()
+
+plt.savefig('better_optimal_control-2.png')
