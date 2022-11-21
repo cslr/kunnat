@@ -18,3 +18,5 @@ Nothing surprising. Biggest values in each variable (divided by the number of re
 NORMAL COMPUTING:
 
 Code to fit linear model to dy(t+1)/dt = A*t(t) + f(t) optimal control problem is in **optimal_control.py**. It also generates graphs showing results.
+
+Theory is described in **aprox_optimal_control_for_mikkeli.pdf**.
