@@ -9,3 +9,7 @@ RESULTS:
 
 Nothing surprising. Biggest values in each variable (divided by the number of residents) result to highest income per resident. Data from Finnish Statistics Center (small dataset).
 
+
+Normal computing:
+
+Code to fit linear model to dy(t+1)/dt = A*t(t) + f(t) optimal control problem is in *optimal_control.py*. It also generates graphs showing results.
