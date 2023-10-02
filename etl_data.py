@@ -62,6 +62,12 @@ print("{} rows and {} cols of data".format(rows, cols))
 print(mean)
 
 ######################################################################
+# normalize maximized first variable to be zero mean and unit variance
+
+for row in range(rows):
+    ddata[row][0] = (ddata[row][0] - mean[0]) / stdev[0];
+
+######################################################################
 # next calculates E[Y|x_j,x_i] used for optimization, we discretize variables
 # to N BINS: (2*sigma/(N/2) = tick length) except the first one which will be target variable
 
@@ -79,7 +85,7 @@ for row in range(rows):
 
 print(ddata)
 
-
+# two variable model
 EY = {}
 
 # negative sign to maximize target (we minimize model energy)
@@ -92,9 +98,21 @@ for k in range(BINS):
                     if(ddata[r][i] == k and ddata[r][j] == l):
                         EY[(i,k,j,l)] = EY[(i,k,j,l)] - ddata[r][0]/rows
 
+                        
+# single variable model                        
+EY2 = {}
+
+for k in range(BINS):
+    for i in range(1, cols):
+        EY2[(i,k)] = 0.0
+        for r in range(rows):
+            if(ddata[r][i] == k):
+                EY2[(i,k)] = EY2[(i,k)] - ddata[r][0]/rows
+
 
 # We minimize E[Y] so we use negative sign to actually maximize E[Y]
 print(EY)
+print(EY2)
 
 #####################################################################
 ## D-WAVE sampler solver part
@@ -108,8 +126,20 @@ for p in range(1,len(headers)):
     dqm.add_variable(BINS, label=headers[p])
 
 for p0 in range(1,len(headers)):
+    v0 = headers[p0]
+
+    EY2map = [0 for i in range(BINS)] 
+
+    for k in range(BINS):
+        EY2map[k] = EY2[(p0,k)]
+
+    print(v0)    
+    print(EY2map)    
+            
+    dqm.set_linear(v0, EY2map)
+    
+    
     for p1 in range(1, p0):
-        v0 = headers[p0]
         v1 = headers[p1]
 
         EYmap = {}
